@@ -1,0 +1,291 @@
+/* 
+@import "tailwindcss";
+
+:root {
+  --background: #242529;
+  --foreground: #f5f5f5;
+  --accent: #ff6748;
+  --secondary: #292a2f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+} */
+
+
+
+@import "tailwindcss";
+
+/* =====================================
+   GLOBAL THEME
+===================================== */
+
+:root {
+  --background: #242529;
+  --foreground: #f5f5f5;
+  --accent: #ff6748;
+  --secondary: #292a2f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =====================================
+   UNIQUE PROFILE FRAME
+===================================== */
+
+.profile-frame {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 430px);
+  height: 520px;
+  padding: 23px;
+  background: #1e1f23;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  transition: transform 0.5s ease, border-color 0.5s ease;
+}
+
+/* Outer orange glow */
+
+.profile-frame-glow {
+  position: absolute;
+  inset: 10%;
+  background: #ff6748;
+  opacity: 0.12;
+  filter: blur(85px);
+  z-index: -1;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+/* Outer frame */
+
+.profile-frame-border {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 103, 72, 0.16);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Image container */
+
+.profile-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #242529;
+}
+
+/* Profile image */
+
+.profile-image {
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.8s ease;
+}
+
+/* Inner orange frame */
+
+.profile-inner-frame {
+  position: absolute;
+  inset: 23px;
+  border: 1px solid rgba(255, 103, 72, 0.35);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Orange corner accents */
+
+.frame-corner {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border-color: #ff6748;
+  border-style: solid;
+  z-index: 5;
+  transition: width 0.4s ease, height 0.4s ease;
+  pointer-events: none;
+}
+
+.frame-top-left {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+
+.frame-top-right {
+  top: 0;
+  right: 0;
+  border-width: 2px 2px 0 0;
+}
+
+.frame-bottom-left {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 2px 2px;
+}
+
+.frame-bottom-right {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+/* Decorative horizontal lines */
+
+.frame-line {
+  position: absolute;
+  left: 50%;
+  width: 45px;
+  height: 1px;
+  background: #ff6748;
+  transform: translateX(-50%);
+  opacity: 0.8;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.frame-line-top {
+  top: 0;
+}
+
+.frame-line-bottom {
+  bottom: 0;
+}
+
+/* Decorative dots */
+
+.frame-dot {
+  position: absolute;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: #ff6748;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  box-shadow: 0 0 12px #ff6748;
+  pointer-events: none;
+}
+
+.frame-dot-top {
+  top: 8px;
+}
+
+.frame-dot-bottom {
+  bottom: 8px;
+}
+
+/* Hover animation */
+
+.profile-frame:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 103, 72, 0.55);
+}
+
+.profile-frame:hover .profile-frame-glow {
+  opacity: 0.24;
+}
+
+.profile-frame:hover .profile-image {
+  transform: scale(1.035);
+}
+
+.profile-frame:hover .frame-corner {
+  width: 55px;
+  height: 55px;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 768px) {
+  .profile-frame {
+    width: min(100%, 380px);
+    height: 460px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-frame {
+    width: min(100%, 330px);
+    height: 420px;
+    padding: 18px;
+  }
+
+  .profile-inner-frame {
+    inset: 18px;
+  }
+
+  .profile-frame-border {
+    inset: 9px;
+  }
+}
+
+/* =====================================
+   ACCESSIBILITY
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-frame,
+  .profile-image,
+  .frame-corner {
+    transition: none;
+  }
+}
